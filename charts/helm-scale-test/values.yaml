@@ -5,6 +5,7 @@
 env:
   CPU: 1
   TIME: 2m
+  SLEEP: 2m
 
 replicaCount: 1
 

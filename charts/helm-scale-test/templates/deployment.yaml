@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "helm-scale-test.fullname" . }}
+  namespace: {{ include "helm-scale-test.name" }}
   labels:
     {{- include "helm-scale-test.labels" . | nindent 4 }}
     app.mylabel: {{ printf "\"%d\"" (add (.Values.testnum|int) (.Values.replicaCount|int)) }}
@@ -39,7 +40,7 @@ spec:
               name: test-data
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ['/bin/sh']
-          args: ['-c','apt update && apt install -y stress; while true; do echo $(cat /var/sis/data.txt); stress -c ${CPU} -t ${TIME}; sleep 10m;done']
+          args: ['-c','apt update && apt install -y stress; while true; do echo $(cat /var/sis/data.txt); stress -c ${CPU} -t ${TIME}; sleep ${SLEEP};done']
           env:
             {{- range $k, $v:= $.Values.env }}
             - name: {{ $k }}
