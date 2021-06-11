@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "helm-scale-test.fullname" . }}
-{{/*  namespace: {{ include "helm-scale-test.name" . }} #todo causes errors*/}}
   labels:
     {{- include "helm-scale-test.labels" . | nindent 4 }}
     app.mylabel: {{ printf "\"%d\"" (add (.Values.testnum|int) (.Values.replicaCount|int)) }}
@@ -10,9 +9,7 @@ metadata:
     prometheus.io/scrape: 'true'
     prometheus.io/path: /metrics/prometheus
 spec:
-{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-{{- end }}
   selector:
     matchLabels:
       {{- include "helm-scale-test.selectorLabels" . | nindent 6 }}

@@ -3,6 +3,15 @@ entries:
   helm-scale-test:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-06-11T11:57:51.5301823+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 9d494006a6f4061de95cee92c5a807b69d85b5852ff624cf0b5c38a40fad5b70
+    name: helm-scale-test
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/helm-scale-test-0.1.5/helm-scale-test-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-06-11T11:32:41.7890913+01:00"
     description: A Helm chart for Kubernetes
     digest: 58b35e46c13ec7b0f6410ebf0b3be5ea020a5efb9d1831d0aa6ee9e63a6ce4f0
