@@ -37,7 +37,15 @@ spec:
               name: test-data
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           command: ['/bin/sh']
-          args: ['-c','apt update && apt install -y stress; while true; do echo $(cat /var/sis/data.txt); stress -c ${CPU} -t ${TIME}; sleep ${SLEEP};done']
+          args:
+            - -c
+            - |
+              apt update && apt install -y stress;
+              while true;
+                do echo $(cat /var/sis/data.txt);
+                #stress -c ${CPU} -t ${TIME};
+                sleep ${SLEEP};
+              done;
           env:
             {{- range $k, $v:= $.Values.env }}
             - name: {{ $k }}
