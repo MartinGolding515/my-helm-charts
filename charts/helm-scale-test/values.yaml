@@ -36,13 +36,5 @@ resources:
    cpu: 500m
    memory: 32Mi
 
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 4
-#  targetCPUUtilizationPercentage: 5000m
-  external: 999m
-
-
 
 
