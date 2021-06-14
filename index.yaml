@@ -1,5 +1,15 @@
 apiVersion: v1
 entries:
+  helm-operator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-14T12:02:10.9265299+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 65147a60f64ae17866a9734fe5c9288fe01dc00489acc7f0431b32444fa19c1f
+    name: helm-operator
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/helm-operator-0.1.0/helm-operator-0.1.0.tgz
+    version: 0.1.0
   helm-scale-test:
   - apiVersion: v2
     appVersion: 1.16.0
