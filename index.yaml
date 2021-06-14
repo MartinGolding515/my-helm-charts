@@ -72,6 +72,20 @@ entries:
   helmoperator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-06-14T17:43:38.2130023+01:00"
+    description: Creates CRD from a helm chart pulled from a helm repo
+    digest: 3e87c26112a5a2df02c5514db0b0714d53b5446dd0e53a96e2899bf7527d2438
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: helmoperator
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/helmoperator-0.1.2/helmoperator-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-06-14T14:48:36.7147025+01:00"
     description: Creates CRD from a helm chart pulled from a helm repo
     digest: f56f320672f59ff8557bd3969f0927850e1fa50c1785d44eb065673280bdbadf
