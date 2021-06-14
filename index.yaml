@@ -3,8 +3,22 @@ entries:
   helm-operator:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2021-06-14T12:10:33.8975299+01:00"
+    description: Creates CRD from a helm chart pulled from a helm repo
+    digest: 3233866208378693e1e0c06b9892b3f1324f2c72312e5471277f82b53a25098a
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: helm-operator
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/helm-operator-0.1.1/helm-operator-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2021-06-14T12:02:10.9265299+01:00"
-    description: A Helm chart for Kubernetes
+    description: Installs helm-operator, instantiates custom resource and HPA.
     digest: 65147a60f64ae17866a9734fe5c9288fe01dc00489acc7f0431b32444fa19c1f
     name: helm-operator
     urls:
