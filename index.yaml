@@ -93,4 +93,19 @@ entries:
     urls:
     - https://github.com/MartinGolding515/my-helm-charts/releases/download/helm-scale-test-0.1.0/helm-scale-test-0.1.0.tgz
     version: 0.1.0
+  helmOperator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-06-14T13:28:28.8771915+01:00"
+    description: Creates CRD from a helm chart pulled from a helm repo
+    digest: 72d1b394f55cba1b31969130922ba04c8d9aa01cc8ea81838c235041e089261a
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: helmOperator
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/helmOperator-0.1.1/helmOperator-0.1.1.tgz
+    version: 0.1.1
 generated: "2021-06-09T14:36:47.7020721+01:00"
