@@ -169,4 +169,19 @@ entries:
     urls:
     - https://github.com/MartinGolding515/my-helm-charts/releases/download/high-priority-0.0.1/high-priority-0.0.1.tgz
     version: 0.0.1
+  run-once:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-07-08T16:44:36.9970497+01:00"
+    description: prints out config map once only
+    digest: e41904ccb9212bb34b227b4d4afdf533b19ef715c55a9bc7e4f93353c7fc3203
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: run-once
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/run-once-0.0.1/run-once-0.0.1.tgz
+    version: 0.0.1
 generated: "2021-06-09T14:36:47.7020721+01:00"

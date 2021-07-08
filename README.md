@@ -17,6 +17,9 @@ cr index -i ./index.yaml -p .deploy --owner martingolding515 --repo my-helm-char
 
 Git commit and push
 
+index file should be here:
+https://martingolding515.github.io/my-helm-charts/index.yaml
+
 *** have to remove old versions from .deploy folder before uploading a new one ***
 *** keep new version in .deploy when running cr index
 
