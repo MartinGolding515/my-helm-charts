@@ -6,3 +6,5 @@ cr index -i ./index.yaml -p .deploy --owner martingolding515 --repo my-helm-char
 
 echo "now commit and push to use new index.yaml"
 
+
+
