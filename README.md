@@ -11,7 +11,7 @@ Instructions
 3. remove old charts from deploy folderh
 I didnt create a env var for cr so had to pass token:
 
-cr upload -o martingolding515 -r my-helm-charts -p .deploy -t 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
+cr upload -o martingolding515 -r my-helm-charts -p .deploy -t <token?>
 
 cr index -i ./index.yaml -p .deploy --owner martingolding515 --repo my-helm-charts
 

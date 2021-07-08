@@ -115,6 +115,20 @@ entries:
   high-priority:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2021-07-08T09:27:35.7742633+01:00"
+    description: prints out config map in a loop
+    digest: 1ff516d29503fdaec16131720e8f8a05c1f79c7b6fd08bf2c544c5abc76b6f5d
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: high-priority
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/high-priority-0.0.4/high-priority-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2021-07-08T09:11:49.694088+01:00"
     description: prints out config map in a loop
     digest: 2356be77b6a8532428e916d3ec859c0113a6a550f8666ce0cec415f9644dee92

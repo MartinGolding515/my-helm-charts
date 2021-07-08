@@ -1,5 +1,9 @@
+echo "get token"
+token=$(cat .token)
+echo $token
+
 echo "uploading charts to github pages"
-cr upload -o martingolding515 -r my-helm-charts -p .deploy -t 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
+cr upload -o martingolding515 -r my-helm-charts -p .deploy -t $token
 
 echo "updating new index.yaml"
 cr index -i ./index.yaml -p .deploy --owner martingolding515 --repo my-helm-charts
