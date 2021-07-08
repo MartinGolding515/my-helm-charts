@@ -112,4 +112,19 @@ entries:
     urls:
     - https://github.com/MartinGolding515/my-helm-charts/releases/download/helmoperator-0.1.1/helmoperator-0.1.1.tgz
     version: 0.1.1
+  high-priority:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-07-08T08:40:30.9880112+01:00"
+    description: prints out config map in a loop
+    digest: ca8170ed77a37a6fd471359190ebb65bc4d58af8c9bec0979998a3fe47f00e15
+    home: https://github.com/MartinGolding515/my-helm-charts/releases
+    keywords:
+    - testapp
+    maintainers:
+    - name: Martin Golding
+    name: high-priority
+    urls:
+    - https://github.com/MartinGolding515/my-helm-charts/releases/download/high-priority-0.0.1/high-priority-0.0.1.tgz
+    version: 0.0.1
 generated: "2021-06-09T14:36:47.7020721+01:00"

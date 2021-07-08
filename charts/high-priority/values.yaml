@@ -1,0 +1,44 @@
+# Default values for helm-scale-test.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+env:
+  SLEEP: 2m
+
+priority:
+  name: high-priority
+  value: 1000000
+  preemptionPolicy: PreemptLowerPriority #Never
+  globalDefault: false
+
+replicaCount: 1
+
+image:
+  repository: debian
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "stable-slim"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  limits:
+   cpu: 1
+   memory: 64Mi
+  requests:
+   cpu: 500m
+   memory: 32Mi
+
+
+
