@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "helm-scale-test.fullname" . }}
+  name: {{ include "high-priority.fullname" . }}
   labels:
-    {{- include "helm-scale-test.labels" . | nindent 4 }}
+    {{- include "high-priority.labels" . | nindent 4 }}
     app.mylabel: {{ printf "\"%d\"" (add (.Values.testnum|int) (.Values.replicaCount|int)) }}
   annotations:
     prometheus.io/scrape: 'true'
@@ -12,7 +12,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "helm-scale-test.selectorLabels" . | nindent 6 }}
+      {{- include "high-priority.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -20,7 +20,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "helm-scale-test.selectorLabels" . | nindent 8 }}
+        {{- include "high-priority.selectorLabels" . | nindent 8 }}
     spec:
       volumes:
         - name: test-data
