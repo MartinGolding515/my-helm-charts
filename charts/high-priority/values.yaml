@@ -35,10 +35,10 @@ service:
 resources:
   limits:
    cpu: 1
-   memory: 64Mi
+   memory: 256Mi
   requests:
    cpu: 500m
-   memory: 32Mi
+   memory: 256Mi
 
 
 
