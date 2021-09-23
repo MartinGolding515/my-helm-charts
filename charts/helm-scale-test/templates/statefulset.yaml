@@ -1,6 +1,6 @@
-{{- if eq .Values.sts.enable false }}
+{{- if eq .Values.sts.enable true }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "helm-scale-test.fullname" . }}
   labels:
@@ -11,12 +11,14 @@ metadata:
     prometheus.io/path: /metrics/prometheus
 spec:
   replicas: {{ .Values.replicaCount }}
-  strategy:
-    type: Recreate
-{{/*    type: RollingUpdate*/}}
-{{/*    rollingUpdate:*/}}
-{{/*      maxSurge: 67%*/}}
-{{/*      maxUnavailable: 67%*/}}
+  podManagementPolicy: Parallel #only for scaling, doesnt affect updates
+  serviceName: {{ include "helm-scale-test.fullname" . }}
+  updateStrategy:
+{{/*    type: OnDelete*/}}
+    type: RollingUpdate
+    rollingUpdate:
+      partition: {{ .Values.sts.partition }} # pods with ordinal above this will be updated*/}}
+{{/*  ... have to change this value to update lower ordinals (i.e. 2+ step update) - canary */}}
   selector:
     matchLabels:
       {{- include "helm-scale-test.selectorLabels" . | nindent 6 }}
@@ -29,7 +31,7 @@ spec:
       labels:
         {{- include "helm-scale-test.selectorLabels" . | nindent 8 }}
     spec:
-      terminationGracePeriodSeconds: 5
+      terminationGracePeriodSeconds: 15
       volumes:
         - name: test-data
           configMap:
@@ -80,5 +82,4 @@ spec:
               containerPort: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-
 {{- end }}
