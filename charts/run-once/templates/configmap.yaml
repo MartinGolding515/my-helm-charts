@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  data.txt: |-
+    {{- range $k, $e:= until (.Values.replicaCount|int) }}
+      {{ printf "a test string %d\n" $k }}
+    {{- end }}
+kind: ConfigMap
+metadata:
+  annotations: {}
+  name: {{ printf "%s-data-cm" .Chart.Name }}

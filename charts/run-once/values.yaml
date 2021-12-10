@@ -2,16 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-sts:
-  enable: true
-  partition:
-
 env:
-  CPU: 0.01
-  TIME: 1m
-  SLEEP: 5m
+  CPU: 1
+  TIME: 2m
+  SLEEP: 2m
 
-replicaCount: 6
+replicaCount: 10
 
 image:
   repository: debian

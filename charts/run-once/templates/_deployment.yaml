@@ -1,25 +1,18 @@
-{{- if eq .Values.sts.enable false }}
-apiVersion: apps/v1
-kind: Deployment
+
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: {{ include "helm-scale-test.fullname" . }}
+  name: {{ include "run-once.fullname" . }}
   labels:
-    {{- include "helm-scale-test.labels" . | nindent 4 }}
+    {{- include "run-once.labels" . | nindent 4 }}
     app.mylabel: {{ printf "\"%d\"" (add (.Values.testnum|int) (.Values.replicaCount|int)) }}
   annotations:
     prometheus.io/scrape: 'true'
     prometheus.io/path: /metrics/prometheus
 spec:
-  replicas: {{ .Values.replicaCount }}
-  strategy:
-{{/*    type: Recreate*/}}
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 67%
-      maxUnavailable: 67%
   selector:
     matchLabels:
-      {{- include "helm-scale-test.selectorLabels" . | nindent 6 }}
+      {{- include "run-once.selectorLabels" . | nindent 6 }}
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -27,9 +20,8 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "helm-scale-test.selectorLabels" . | nindent 8 }}
+        {{- include "run-once.selectorLabels" . | nindent 8 }}
     spec:
-      terminationGracePeriodSeconds: 5
       volumes:
         - name: test-data
           configMap:
@@ -38,19 +30,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      initContainers:
-        - name: wait
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          command: ['/bin/sh']
-          env:
-            - name: WAIT_SECONDS
-              value: "5"
-          args:
-            - -c
-            - |
-              echo sleep for ${WAIT_SECONDS};
-              sleep ${WAIT_SECONDS};
-              echo done
       containers:
         - name: {{ .Chart.Name }}
           volumeMounts:
@@ -61,14 +40,9 @@ spec:
           args:
             - -c
             - |
-              apt update > /dev/null;
-              apt install -y stress htop > /dev/null;
-              while :
-              do
-                echo $(cat /var/sis/data.txt);
-                #stress -c ${CPU} -t ${TIME};
-                sleep ${SLEEP} & wait $!;
-              done;
+              echo $(cat /var/sis/data.txt);
+              #apt update && apt install -y stress;
+              #stress -c ${CPU} -t ${TIME};
           env:
             {{- range $k, $v:= $.Values.env }}
             - name: {{ $k }}
@@ -80,5 +54,3 @@ spec:
               containerPort: 80
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-
-{{- end }}

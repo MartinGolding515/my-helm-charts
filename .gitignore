@@ -2,3 +2,4 @@
 /.idea/
 /.old_versions/
 /.token
+*out.*

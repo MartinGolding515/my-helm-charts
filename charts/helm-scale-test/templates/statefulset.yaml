@@ -17,7 +17,7 @@ spec:
 {{/*    type: OnDelete*/}}
     type: RollingUpdate
     rollingUpdate:
-      partition: {{ .Values.sts.partition }} # pods with ordinal above this will be updated*/}}
+      partition: {{ .Values.sts.partition }} # pods with ordinal above this will be updated
 {{/*  ... have to change this value to update lower ordinals (i.e. 2+ step update) - canary */}}
   selector:
     matchLabels:

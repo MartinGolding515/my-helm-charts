@@ -1,0 +1,43 @@
+{{- range $k, $e:= until (.Values.replicaCount|int) }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "run-once.fullname" $ }}-{{ $k }}
+  labels:
+    {{- include "run-once.labels" $ | nindent 4 }}
+    app.mylabel: {{ printf "\"%d\"" (add ($.Values.testnum|int) ($.Values.replicaCount|int)) }}
+  annotations:
+{{/*    helm.sh/hook-delete-policy: hook-succeeded*/}}
+spec:
+  volumes:
+    - name: test-data
+      configMap:
+        name: {{ printf "%s-data-cm" $.Chart.Name }}
+  {{- with $.Values.imagePullSecrets }}
+  imagePullSecrets:
+    {{- toYaml . | nindent 8 }}
+  {{- end }}
+  containers:
+    - name: {{ $.Chart.Name }}
+      volumeMounts:
+        - mountPath: /var/sis/
+          name: test-data
+      image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+      command: ['/bin/sh']
+      args:
+        - -c
+        - |
+          echo $(cat /var/sis/data.txt);
+          #apt update && apt install -y stress;
+          #stress -c ${CPU} -t ${TIME};
+      env:
+        {{- range $k, $v:= $.Values.env }}
+        - name: {{ $k }}
+          value: {{ $v | quote }}
+          {{- end}}
+      imagePullPolicy: {{ $.Values.image.pullPolicy }}
+  restartPolicy: Never
+---
+{{- end }}
+
+
